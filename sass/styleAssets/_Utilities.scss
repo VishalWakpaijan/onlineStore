@@ -1,0 +1,33 @@
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Colors
+
+$--clr-logo: #ff0100;
+
+// class Utilities
+
+.container {
+  width: 97%;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+
+// Button
+
+%btn {
+  padding: 12px 20px;
+  background-color: #ff0100;
+  color: white;
+  border-radius: 10px;
+}
+
+.primary_btn {
+  @extend %btn;
+}
