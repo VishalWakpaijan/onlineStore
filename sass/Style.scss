@@ -1,6 +1,5 @@
 @import "./styleAssets/Fonts";
 @import "./styleAssets/Utilities";
-@import "./styleAssets/Mobile";
 
 body {
   line-height: 1.4;
@@ -10,58 +9,74 @@ body {
 
   background-color: #ffffff;
   color: #3c3c3c;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .navigation {
+    .nav_wrapper {
+      .right {
+        .search_input {
+          input {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .categories_section {
+    .container {
+      .categories_items {
+        flex-direction: column;
+        .box {
+          min-height: 180px;
+        }
+      }
+    }
+  }
+}
+
+.serachBar {
+  display: none;
+}
+
+.activeSearchbar {
+  display: block;
+  position: absolute;
+
+  top: 20px;
+  left: 50%;
+
+  transform: translate(-50%);
+
+  .search_input {
+    input[type="text"] {
+      width: 290px;
+      padding: 0.4rem 0.2rem;
+    }
+  }
 }
 
 .navigation {
   width: 100%;
   max-height: 70px;
-  position: fixed;
 
   z-index: 10;
+
+  position: relative;
 
   .nav_wrapper {
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
-
-    .left {
-      .logo {
-        display: inline-block;
-
-        h1 {
-          font-family: $-ff-logo;
-          font-size: clamp(2.2rem, 4vw, 1.5rem);
-          letter-spacing: -2px;
-          color: $--clr-logo;
-
-          span {
-            text-decoration: underline;
-          }
-        }
-
-        p {
-          margin: -8px 0 0 50px;
-          position: relative;
-
-          font-family: $-ff-subLogo;
-          font-size: 1.2rem;
-          font-weight: 600;
-
-          letter-spacing: 2px;
-
-          color: blue;
-
-          &::before {
-            position: absolute;
-            content: "";
-            padding: 5px;
-            width: 30px;
-            margin: 8px 0 0 -50px;
-            background-color: red;
-          }
-        }
-      }
-    }
 
     .right {
       justify-content: space-between;
@@ -114,7 +129,7 @@ body {
           width: 20px;
           top: -10px;
           left: 30px;
-          background-color: red;
+          background-color: $--clr-logo;
           color: white;
           border-radius: 100%;
         }
@@ -123,6 +138,376 @@ body {
       .profile {
         font-size: 0.9rem;
         text-align: center;
+      }
+    }
+  }
+}
+
+// categories section
+
+.categories_section {
+  margin: 1rem 0;
+  .container {
+    .categories_items {
+      margin: 1.5rem 0;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 20px;
+
+      .box {
+        flex: 1 1 18%;
+        position: relative;
+        padding: 0 0 10px 0;
+
+        height: 200px;
+
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        font-size: 1.3rem;
+        font-weight: 600;
+
+        z-index: 5;
+
+        &::before {
+          content: "";
+          position: absolute;
+
+          top: 0;
+          left: 0;
+
+          width: 100%;
+          height: 100%;
+
+          z-index: -1;
+
+          background: linear-gradient(to top, rgba(34, 34, 34, 0.849) 5%, rgba(255, 255, 255, 0));
+        }
+
+        &:nth-child(1) {
+          background: url("/images/categories/mens.jpg");
+        }
+        &:nth-child(2) {
+          background: url("/images/categories/kids.jpg");
+        }
+        &:nth-child(3) {
+          background: url("/images/categories/womens.jpg");
+        }
+        &:nth-child(4) {
+          background: url("/images/categories/Footwear.jpg");
+        }
+
+        &:nth-child(5) {
+          background: url("/images/categories/Accessories.jpg");
+        }
+      }
+    }
+  }
+}
+
+// Slidshow
+
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+
+  padding: 1rem 0;
+
+  .mySlides {
+    display: none;
+  }
+
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin: -22px 8px;
+    padding: 12px 18px;
+    color: white;
+    background-color: #71717170;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.6s ease;
+    border-radius: 100%;
+    user-select: none;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.dot_container {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  z-index: 5;
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+}
+
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Deals section
+
+.deals_section {
+  .box-wrapper {
+    margin: 2rem 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+
+    overflow-x: scroll;
+
+    scroll-behavior: smooth;
+
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .itemBox {
+      position: relative;
+      flex: 0 0 180px;
+      padding: 0.5rem;
+
+      .descount_number {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: $--clr-logo;
+        color: white;
+        padding: 0.2rem 0.4rem;
+        border-radius: 8px;
+      }
+
+      img {
+        height: 250px;
+        width: 200px;
+      }
+
+      .itemDetails {
+        p {
+          padding: 0.2rem 0;
+
+          &:nth-child(1) {
+            font-size: 13px;
+            font-weight: 600;
+            color: #cccccc;
+          }
+
+          &:nth-child(2) {
+            font-size: 14px;
+            font-weight: 700;
+            color: #222;
+          }
+        }
+      }
+
+      .price_wrapper {
+        padding: 0.3rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .discounted_price {
+          font-size: 16px;
+          font-weight: 600;
+        }
+
+        .main_price {
+          font-size: 12px;
+          font-weight: 600;
+          color: #cccccc;
+          text-decoration: line-through;
+        }
+      }
+
+      .outStock {
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+        color: $--clr-logo;
+
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.brand_wrapper {
+  margin: 1.5rem 0;
+
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+
+  & > div {
+    height: 100px;
+    width: 200px;
+    border: 1px solid #edebec;
+
+    display: grid;
+    place-content: center;
+  }
+
+  & > div img {
+    width: 180px;
+  }
+}
+
+// Bottom nav
+
+.bottom_navigation {
+  margin: 5rem 0 3rem 0;
+  .wrapper {
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .bottom_nav_heading {
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 1.5rem 0;
+    }
+
+    ul {
+      li {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #333;
+
+        padding: 0.4rem 0;
+      }
+    }
+  }
+}
+
+// Footer section
+
+.footer_section {
+  .main_footer {
+    .container_two {
+      justify-content: space-between;
+
+      .left {
+        div {
+          margin-right: 50px;
+        }
+        p {
+          font-size: 0.9rem;
+          font-weight: 600;
+        }
+      }
+
+      .right {
+        img {
+          margin-left: 10px;
+
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  .secondry_footer {
+    padding: 0 0 1rem 0;
+    flex-direction: column;
+    p {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .footer_text {
+      & > * {
+        margin: 0 2px;
+      }
+
+      span {
+        background-color: rgb(122, 109, 109);
+        padding: 8px;
+        border-radius: 100%;
+      }
+
+      & > div {
+        padding: 0.2rem 0;
+        h3 {
+          font-size: 1.3rem;
+          font-weight: 700;
+        }
+        p {
+          margin-top: -10px;
+          font-family: $-ff-cursive;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .brand_wrapper {
+    margin: 1.5rem 0;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .footer_section {
+    .main_footer {
+      .container_two {
+        flex-direction: column;
       }
     }
   }

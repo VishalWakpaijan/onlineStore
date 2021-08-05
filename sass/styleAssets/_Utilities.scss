@@ -2,6 +2,8 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 // Colors
@@ -15,19 +17,87 @@ $--clr-logo: #ff0100;
   margin: 0 auto;
 }
 
+.container_two {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .flex {
   display: flex;
+  align-items: center;
+}
+
+.section {
+  .heading_text {
+    justify-content: space-between;
+    align-items: center;
+
+    .section_text {
+      font-weight: 700;
+      font-size: clamp(1.2rem, 4vw, 1.1rem);
+    }
+
+    a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: $--clr-logo;
+    }
+  }
 }
 
 // Button
 
 %btn {
-  padding: 12px 20px;
+  padding: 0.5rem 0.8rem;
   background-color: #ff0100;
   color: white;
   border-radius: 10px;
+  border: 0;
+  outline: 0;
+  font-size: 15px;
 }
 
-.primary_btn {
+.buyBtn {
   @extend %btn;
+}
+
+%logo {
+  display: inline-block;
+
+  h1 {
+    font-family: $-ff-logo;
+    font-size: clamp(2.2rem, 4vw, 1.5rem);
+    letter-spacing: -2px;
+    color: $--clr-logo;
+
+    span {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin: -8px 0 0 50px;
+    position: relative;
+
+    font-family: $-ff-subLogo;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    color: blue;
+
+    &::before {
+      position: absolute;
+      content: "";
+      padding: 5px;
+      width: 30px;
+      margin: 8px 0 0 -50px;
+      background-color: $--clr-logo;
+    }
+  }
+}
+
+.logo {
+  @extend %logo;
 }
