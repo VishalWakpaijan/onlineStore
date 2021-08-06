@@ -115,7 +115,7 @@ body {
     left: 0;
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 550vh;
 
     z-index: 10;
 
@@ -444,7 +444,11 @@ body {
 // Bottom nav
 
 .bottom_navigation {
+  padding: 1.5rem 0;
   margin: 5rem 0 3rem 0;
+
+  background-color: #ededed;
+
   .wrapper {
     align-items: flex-start;
     justify-content: space-between;
