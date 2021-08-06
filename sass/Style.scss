@@ -43,6 +43,10 @@ body {
         width: 23px;
       }
 
+      & > span p {
+        font-size: 1rem;
+      }
+
       .search_input {
         margin: 0 20px;
 
@@ -74,10 +78,6 @@ body {
         display: none;
         font-size: 0.9rem;
         text-align: center;
-
-        img {
-          width: 23px;
-        }
       }
 
       .shopping_bag {
@@ -138,6 +138,7 @@ body {
   .searchBar_active {
     display: block;
     position: absolute;
+
     top: 0;
     left: 50%;
 
@@ -556,6 +557,9 @@ body {
   .navigation {
     .nav_wrapper {
       .right {
+        & > span p {
+          font-size: 0.6rem;
+        }
         .search_input {
           input {
             display: none;
