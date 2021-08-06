@@ -37,8 +37,16 @@
         </div>
         <div class="right flex">
           <span class="search_input">
-            <input type="text" placeholder="SEARCH PRODUCTS..." />
+            <form onsubmit="submitFunction()">
+              <input type="text" placeholder="SEARCH PRODUCTS..." />
+            </form>
           </span>
+
+          <span class="searchIcon" id="searchBtn">
+            <img src="./images/search.png" alt="search" />
+            <p>SEARCH</p>
+          </span>
+
           <span class="shopping_bag">
             <img src="./images/bag.png" alt="shopping_bag" />
             <p>BAG</p>
@@ -48,6 +56,12 @@
             <p>PROFILE</p>
           </span>
         </div>
+      </div>
+      <div class="overlay" id="overlay"></div>
+      <div class="searchBar" id="searchBar">
+        <form onsubmit="submitFunction()">
+          <input type="search" placeholder="SEARCH PRODUCTS..." />
+        </form>
       </div>
     </div>
 
